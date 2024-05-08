@@ -1,0 +1,104 @@
+.footer {
+  background-color: #909090; /* Fondo gris */
+  color: black; /* Texto negro */
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6); /* Sombra negra */
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 8px; /* Bordes redondeados */
+  gap: 15px; /* Espacio entre elementos */
+}
+
+.footer-links {
+  flex: 1;
+  text-align: left; /* Alineación de los enlaces */
+}
+
+.footer-links a {
+  color: black; /* Texto negro */
+  text-decoration: none;
+  margin: 10px; /* Ajuste del espaciado */
+}
+
+.footer-info {
+  flex: 1;
+  text-align: right; /* Alineación de la información */
+}
+
+.footer-info p {
+  margin: 5px 0; /* Espaciado entre líneas */
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Alineación vertical para pantallas pequeñas */
+    text-align: center; /* Alineación central */
+  }
+
+  .footer-links {
+    text-align: center; /* Alineación central para enlaces */
+  }
+
+  .footer-info {
+    text-align: center; /* Alineación central para la información */
+  }
+}
+.second-footer {
+  background-color: #444; /* Fondo gris oscuro */
+  color: #f0f0f0; /* Texto claro */
+  padding: 25px; /* Espaciado */
+  text-align: left; /* Alineación a la izquierda */
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.6); /* Sombra negra para profundidad */
+}
+
+.second-footer-container {
+  max-width: 1200px; /* Ancho máximo */
+  margin: 0 auto; /* Centrar el contenedor */
+  display: flex; /* Flex para disposición */
+  flex-direction: column; /* Disposición vertical */
+  padding: 20px; /* Espaciado adicional */
+}
+
+.second-footer-description {
+  font-size: 1.1rem; /* Tamaño de fuente */
+  margin-bottom: 15px; /* Espacio entre elementos */
+}
+
+.second-footer-contact {
+  margin: 20px 0; /* Ajuste del espaciado */
+}
+
+.second-footer-social {
+  display: flex; /* Flex para los íconos */
+  justify-content: flex-start; /* Alineación a la izquierda */
+  gap: 20px; /* Espacio entre íconos */
+}
+
+.second-footer-social a {
+  color: #f0f0f0; /* Color de los íconos */
+  font-size: 1.3rem; /* Tamaño de los íconos */
+  text-decoration: none; /* Sin subrayado */
+  margin: 10px; /* Ajuste de espaciado */
+}
+
+.second-footer-social a:hover {
+  color: #ff9900; /* Color al pasar el ratón por encima */
+}
+
+@media (max-width: 768px) {
+  .second-footer-container {
+    flex-direction: column; /* Alineación vertical para pantallas pequeñas */
+    text-align: center; /* Alineación central */
+  }
+
+  .second-footer-social {
+    justify-content: center; /* Centraliza los íconos en pantallas pequeñas */
+  }
+}

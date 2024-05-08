@@ -1,0 +1,45 @@
+import React from "react";
+import classNames from 'classnames'; // Para manejar clases condicionales
+import "./MainLayout";
+import "./card.css";
+import image from "./camisa1.jpg"
+import FlechaIzquierda from '@mui/icons-material/ArrowBackIosNew';
+import FlechaDerecha from '@mui/icons-material/ArrowForwardIos';
+
+
+const ShoppingCart = ({ isVisible, onClose, cartItems  }) => {
+  return (
+    <div className={classNames('container', { 'showCart': isVisible })}>
+      <div className="cartTab">
+        <h1>carrito</h1>
+        <div className="listCart">
+          <div className="item">
+            <div className="image">
+              <img src={image} alt="imagen ejemplo" />
+            </div>
+            <div className="name">
+              NAME
+            </div>
+            <div className="totalPrice">
+              $200
+            </div>
+            <div className="quantity">
+              <span className="minus"><FlechaIzquierda /></span>
+              <span>1</span>
+              <span className="plus"><FlechaDerecha /></span>
+            </div>
+          </div>
+        </div>
+
+        <div className="btn">
+          {/* Botón de cerrar conectado a la función onClose */}
+          <button className="close" onClick={onClose}>
+            Cerrar
+          </button>
+          <button class="checkOut">CHECK OUT</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+export default ShoppingCart;

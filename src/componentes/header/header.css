@@ -1,0 +1,123 @@
+.contenedor {
+    flex-wrap: wrap; /* Permite que los elementos se muevan a una nueva línea si es necesario */
+    position: relative;
+    padding: 10px 20px;
+    background-color: #909090; /* Fondo gris */
+    box-shadow: 0 5px 10px black; /* Sombra */
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+
+  }
+  
+  .logo {
+    max-width: 250px; /* Tamaño máximo para pantallas grandes */
+    margin-right: 40px;
+    border-radius: 8px;
+    max-width: 250px;
+    margin: 5px;
+
+
+    
+  }
+  
+  .navbar {
+    margin-left: 100px;
+    margin-right: 100px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row; /* Alineación horizontal */
+    background-color: white; /* Fondo blanco para el navbar */
+    border-radius: 10px;
+    box-shadow: 0 5px 10px black; /* Sombra */
+  }
+  
+  ul {
+    display: flex;
+    flex-direction: row; /* Alineación horizontal */
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none; /* Sin viñetas */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    padding: 10px; /* Espacio para cada elemento del menú */
+    padding-left: 20px;
+  }
+  
+  a {
+    text-decoration: none; /* Sin subrayado */
+    color: black !important; /* Color del texto */
+  }
+  
+  .Cart {
+    position: relative;
+    padding-left: 30px;
+    align-items: center;
+  }
+  
+  .Cart span {
+    position: relative;
+    top: 50%;
+    right: -20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: crimson; /* Color de fondo del contador */
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @media (max-width: 768px) {
+    .contenedor {
+      flex-direction: column; /* Cambia la disposición a vertical */
+      align-items: center; /* Centra los elementos verticalmente */
+    }
+  
+    .navbar {
+      flex-direction: column; /* Alineación vertical del navbar */
+      justify-content: center; /* Centra los elementos */
+    }
+  
+    .logo {
+      max-width: 150px; /* Tamaño máximo más pequeño para pantallas pequeñas */
+      margin-bottom: 20px; /* Espaciado entre la imagen y el navbar */
+    }
+  
+    ul {
+      flex-direction: column; /* Alineación vertical para los elementos de la lista */
+      justify-content: center; /* Centra los elementos */
+    }
+  
+    .cart {
+      align-self: flex-end; /* Mueve el carrito hacia el final */
+    }
+  }
+  
+
+
+
+
+
+
+
+
+/* --------------------------header2-------------------------- */
+.CerrarSesion{
+  background-color: #909090;
+  color: black;
+  border-radius: 4px;
+  border: 0;
+  margin-right: 30px;
+  box-shadow: 0 5 10 black !important;
+}

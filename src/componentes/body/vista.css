@@ -1,0 +1,44 @@
+.modal-overlay {
+    position: fixed; /* Fija el overlay para mantenerlo por encima */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para oscurecer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  }
+  
+  .modal-content {
+    background: #fff; /* Fondo blanco para el modal */
+    padding: 20px; /* Espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para efecto de profundidad */
+    max-width: 400px; /* Ancho máximo del modal */
+    text-align: center; /* Centrar texto */
+    z-index: 1001; /* Mayor z-index que el overlay para asegurarse que el modal sobresalga */
+  }
+  
+  .modal-close {
+    position: absolute; /* Para posicionar el botón de cierre */
+    top: 10px;
+    right: 10px;
+    background: none; /* Sin fondo para el botón */
+    border: none; /* Sin borde */
+    font-size: 1.5em; /* Tamaño grande para el botón de cierre */
+    cursor: pointer; /* Cursor tipo puntero */
+  }
+  
+  /* Estilos para la imagen */
+.producto-imagen {
+  border: 2px solid #ccc; /* Borde de 2px sólido con color gris */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 1px 2px 1px 3px #333; /* Sombra para efecto de profundidad */
+  margin-bottom: 10px;
+}
+
+p{
+  font-size: 2.5;
+}

@@ -1,0 +1,39 @@
+import React from 'react';
+import "slick-carousel/slick/slick.css"; // Importar estilos de Slick
+import "slick-carousel/slick/slick-theme.css"; // Importar tema de Slick
+import Slider from "react-slick"; // Importar el componente de Slick
+import imagenesCarrusel from './imagenesCarrusel'; // Importar las imágenes
+import './carrusel.css'; // Cualquier estilo personalizado
+
+function Carrusel() {
+  const settings = {
+    infinite: true, // Habilita desplazamiento infinito
+    speed: 1000, // Velocidad de transición
+    slidesToShow: 1, // Muestra una imagen por parte
+    slidesToScroll: 1, // Desliza una imagen a la vez
+    autoplay: true, // Habilitar reproducción automática
+    autoplaySpeed: 3000, // Intervalo de cambio de imagen (3 segundos)
+    arrows: false, // Habilitar flechas de control
+    // ---------nuevo--------//
+    fade: true
+    
+  };
+
+  return (
+    <div className="container-fluid border" style={{ marginTop: '20px' }}>
+      <Slider {...settings}>
+        {imagenesCarrusel.map((item) => (
+          <div key={item.id}>
+            <img
+              className="d-block w-100"
+              src={item.image}
+              alt={item.descripcion}
+            />
+          </div>
+        ))}
+      </Slider>
+    </div>
+  );
+}
+
+export default Carrusel;

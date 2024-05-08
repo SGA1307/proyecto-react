@@ -1,0 +1,185 @@
+.logo {
+    position: relative;
+    /* Mantiene la posición */
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px;
+    transition: box-shadow 0.3s ease;
+    max-width: 250px;
+    /* Tamaño máximo para pantallas grandes */
+    margin: 5px;
+    margin-right: 40px;
+    width: 30%;
+    /* Proporción base del tamaño */
+}
+
+
+ul {
+    height: 80px;
+    margin-left: 15px;
+    font-family: Arial, sans-serif;
+    color: black;
+}
+
+.contenedor {
+    flex-wrap: wrap;
+    /* Permite que los elementos pasen a la siguiente línea si es necesario */
+
+    position: relative;
+    padding: 10px 20px;
+    margin: 2%;
+    margin-bottom: 50px;
+    background-color: #909090;
+    display: flex;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 0 5px 10px black;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* border: solid 2px blue; */
+
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+ul {
+    /* Estilos que deseas aplicar */
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 100%;
+    width: 60%;
+}
+
+.nav-item {
+    padding: 10px;
+}
+
+.cart cart-shopping {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 10px;
+}
+
+.cart {
+    position: relative;
+    cursor: pointer;
+    padding-right: 30px;
+}
+
+.Cart span {
+    position: relative;
+    top: 50%;
+    right: -20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: crimson;
+}
+
+
+
+.navbar {
+    flex-grow: 1;
+    /* Permite que crezca para llenar el espacio disponible */
+    display: flex;/*aqui*/
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px black;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------MEDIA-------------------------------- */
+/* Estilos para media queries */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        /* Cambia a diseño vertical para pantallas pequeñas */
+    }
+
+    ul {
+        flex-direction: column;
+        /* Cambia el diseño a vertical */
+        align-items: flex-start;
+        /* Alinea los elementos al inicio */
+    }
+
+    .cart {
+        align-self: flex-end;
+        /* Mueve el carrito hacia el final */
+    }
+}
+
+/* Media queries para reducir el tamaño del logo en pantallas más pequeñas */
+@media (max-width: 1024px) {
+    .logo {
+        max-width: 200px;
+        /* Reduce el tamaño máximo */
+        width: 25%;
+        /* Ajusta la proporción */
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        max-width: 150px;
+        /* Más pequeño en pantallas de tabletas */
+        width: 20%;
+        /* Ajusta la proporción para tabletas */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        max-width: 100px;
+        /* Más pequeño para pantallas de móviles */
+        width: 15%;
+        /* Ajusta la proporción para móviles */
+        margin-right: 20px;
+        /* Reduce el margen para mantener el espacio */
+    }
+}
+
+
+
+
+
