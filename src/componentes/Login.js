@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import GoogleIcon from '@mui/icons-material/Google';
-import Header from './header/Header';
-import Footer from './footer/Footer';
-import Cookies from 'universal-cookie';
-import Swal from 'sweetalert2';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import React, { useEffect, useState } from "react";
+import GoogleIcon from "@mui/icons-material/Google";
+import Header from "./header/Header";
+import Footer from "./footer/Footer";
+import Cookies from "universal-cookie";
+import Swal from "sweetalert2";
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
   const cookies = new Cookies();
@@ -56,7 +56,16 @@ const Login = () => {
       return;
     }
 
-    fetch("http://localhost:3001/login", {
+    // fetch("http://localhost:3001/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Acept: "application/json",
+    //   },
+    //   body: JSON.stringify(values),
+    // })
+    // fetch("http://localhost:3001/login", {
+    fetch(`${URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
