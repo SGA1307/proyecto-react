@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
+
+  let URL = process.env.REACT_APP_ENVIRONMENT
   const cookies = new Cookies();
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
