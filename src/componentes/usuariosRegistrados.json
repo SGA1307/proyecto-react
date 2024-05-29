@@ -82,5 +82,17 @@
         "password": "Pe$123456",
         "estado": "activo",
         "fecha_creación": "2024-05-08T18:33:39.055Z"
+    },
+    {
+        "id": 8,
+        "identificacion": "1321331",
+        "nombres": "sebastian",
+        "apellidos": "nose",
+        "email": "swidiud@gmail.com",
+        "direccion": "wffwfwfwffwtrr243242",
+        "telefono": "1234567890",
+        "password": "Lo$12345678",
+        "estado": "activo",
+        "fecha_creación": "2024-05-08T21:07:29.420Z"
     }
 ]
