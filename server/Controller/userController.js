@@ -182,30 +182,29 @@ const controller = {
   },
   login: async function (req, res) {
     try {
-      const config = {
-        method: "GET",
-        url: 'https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff',
+      // Obtener los datos del JSON remoto
+      const response = await axios.get("https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff", {
         headers: {
-          'Content-Type': 'application/json',
           "X-Master-Key": "$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX."
         }
-      };
+      });
+      const users = response.data.record;
 
-      const result = await axios(config);
-      const users = result.data.record;
-
-      const user = users.find(user => user.email === req.body.email && user.password === req.body.password);
-
-      if (user) {
-        res.status(200).send("Ok");
-      } else {
-        res.status(400).send("Error: Credenciales incorrectas");
+      // Verificar las credenciales
+      for (const user of users) {
+        if (user.email === req.body.email && user.password === req.body.password) {
+          return res.status(200).send("Ok");
+        }
       }
+
+      // Si no se encontró el usuario con las credenciales proporcionadas
+      return res.status(400).send("Error: Credenciales inválidas");
     } catch (error) {
-      console.error('Error al procesar el inicio de sesión:', error);
-      res.status(500).send('Error interno del servidor');
+      console.error("Error al procesar el inicio de sesión:", error);
+      return res.status(500).send("Error interno del servidor");
     }
   }
-}
+};
 
 module.exports = controller;
+
