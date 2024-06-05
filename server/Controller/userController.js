@@ -23,7 +23,7 @@
 
 //         userNuevo.push(usuarioNuevo)
 //         let userAux = JSON.stringify(userNuevo, null, "\t")
-//         fs.writeFileSync(userFilePath, userAux) 
+//         fs.writeFileSync(userFilePath, userAux)
 
 //     }
 // }
@@ -100,12 +100,10 @@
 
 // module.exports = controller;
 
-
-
 //Código con JSON de usuarios registrados remoto
 const express = require("express");
 const app = express();
-const axios = require('axios')
+const axios = require("axios");
 const cors = require("cors");
 app.use(cors());
 //const fetch = require('node-fetch')
@@ -115,93 +113,99 @@ const controller = {
     let config = {
       method: "GET",
       maxBodyLength: Infinity,
-      url: 'https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff',
-      headers: { 'Content-Type': 'application/json',
-      "X-Master-Key":"$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX." }
+      url: "https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Master-Key":
+          "$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX.",
+      },
     };
-    axios(config)
-      .then(result => {
-        console.log(result.data.record)
-        let id = result.data.record.length + 1
-        const usuarioNuevo = {
-          id: id,
-          identificacion: req.body.identificacion,
-          nombres: req.body.nombres,
-          apellidos: req.body.apellidos,
-          email: req.body.email,
-          direccion: req.body.direccion,
-          telefono: req.body.telefono,
-          fechaNacimiento: req.body.fechaNacimiento,
-          deptoResidencia: req.body.deptoResidencia,
-          municipioResidencia: req.body.municipioResidencia,
-          password: req.body.password,
-          estado: "activo",
-          rol: "Usuario",
-          fecha_creación: new Date(),
-        };
-        if (result.data.record.length === 0) {
-          result.data.record.push(usuarioNuevo)
-        }
-        else {
-          for (x of result.data.record) {
-            if (x.email === req.body.email) {
-              res.status(400).send("Usuario ya existe en la Base de Datos")
-              return
-            }
+    axios(config).then((result) => {
+      console.log(result.data.record);
+      let id = result.data.record.length + 1;
+      const usuarioNuevo = {
+        id: id,
+        identificacion: req.body.identificacion,
+        nombres: req.body.nombres,
+        apellidos: req.body.apellidos,
+        email: req.body.email,
+        direccion: req.body.direccion,
+        telefono: req.body.telefono,
+        fechaNacimiento: req.body.fechaNacimiento,
+        deptoResidencia: req.body.deptoResidencia,
+        municipioResidencia: req.body.municipioResidencia,
+        password: req.body.password,
+        estado: "activo",
+        rol: "Usuario",
+        fecha_creación: new Date(),
+      };
+      if (result.data.record.length === 0) {
+        result.data.record.push(usuarioNuevo);
+      } else {
+        for (x of result.data.record) {
+          if (x.email === req.body.email) {
+            res.status(400).send("Usuario ya existe en la Base de Datos");
+            return;
           }
-          result.data.record.push(usuarioNuevo)
         }
-        console.log("--->>>",result.data.record)
+        result.data.record.push(usuarioNuevo);
+      }
+      console.log("--->>>", result.data.record);
 
-        fetch("https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff", {
-          method: "PUT",
-          headers: { "Content-Type": "Application/json",
-          "X-Master-Key":"$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX." },
-          body: JSON.stringify(result.data.record),
-        })
-          // let configPut = {
-          //   method: "PUT",
-          //   url: "https://json.extendsclass.com/bin/cd70c6c83bc6",
-          //   headers: { "Content-Type": "Application/json", "Security-key": "12345678" },
-          //   body: JSON.stringify(result.data),
-          // }
-          // axios(configPut)
-          .then(response => {
-            console.log(response.status)
-            if (response.status === 200) {
-              res.status(200).send('ok')
-              return
-            }
-            else {
-              res.status(400).send("No Ok")
-              return
-            }
-          })
+      fetch("https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "Application/json",
+          "X-Master-Key":
+            "$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX.",
+        },
+        body: JSON.stringify(result.data.record),
       })
-
+        // let configPut = {
+        //   method: "PUT",
+        //   url: "https://json.extendsclass.com/bin/cd70c6c83bc6",
+        //   headers: { "Content-Type": "Application/json", "Security-key": "12345678" },
+        //   body: JSON.stringify(result.data),
+        // }
+        // axios(configPut)
+        .then((response) => {
+          console.log(response.status);
+          if (response.status === 200) {
+            res.status(200).send("ok");
+            return;
+          } else {
+            res.status(400).send("No Ok");
+            return;
+          }
+        });
+    });
   },
-      login: async function (req, res) {
-        try {
-            const usersData = await fs.readFile(userFilePath, 'utf-8');
-            const users = JSON.parse(usersData);
-
-            for (x of users) {
-                if (x.email === req.body.email && x.password === req.body.password) {
-                    res.status(200).send("Ok")
-                    return
-                }
-            }
-            res.status(400).send('Error')
+  login: async function (req, res) {
+    try {
+      const config = {
+        method: "GET",
+        url: 'https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff',
+        headers: {
+          'Content-Type': 'application/json',
+          "X-Master-Key": "$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX."
         }
+      };
 
-        catch (error) {
-            console.error('Error al procesar el registro:', error);
-            res.status(500).send('Error interno del servidor');
-        }
+      const result = await axios(config);
+      const users = result.data.record;
+
+      const user = users.find(user => user.email === req.body.email && user.password === req.body.password);
+
+      if (user) {
+        res.status(200).send("Ok");
+      } else {
+        res.status(400).send("Error: Credenciales incorrectas");
+      }
+    } catch (error) {
+      console.error('Error al procesar el inicio de sesión:', error);
+      res.status(500).send('Error interno del servidor');
     }
-
+  }
 }
-
-
 
 module.exports = controller;
