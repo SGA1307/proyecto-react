@@ -179,7 +179,27 @@ const controller = {
           })
       })
 
-  }
+  },
+      login: async function (req, res) {
+        try {
+            const usersData = await fs.readFile(userFilePath, 'utf-8');
+            const users = JSON.parse(usersData);
+
+            for (x of users) {
+                if (x.email === req.body.email && x.password === req.body.password) {
+                    res.status(200).send("Ok")
+                    return
+                }
+            }
+            res.status(400).send('Error')
+        }
+
+        catch (error) {
+            console.error('Error al procesar el registro:', error);
+            res.status(500).send('Error interno del servidor');
+        }
+    }
+
 }
 
 

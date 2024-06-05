@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 
 const user = require ("./Controller/userController")
 app.use('/registro-usuario',user.register)
-// app.use('/login',user.login)
+app.use('/login',user.login)
 
 
 const PORT = 3001
