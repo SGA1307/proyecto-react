@@ -68,7 +68,7 @@ const Login = () => {
     // })
     // fetch("http://localhost:3001/login", {
   console.log("URL---->",URL)
-    fetch(`${URL}/Login`, {
+    fetch(`${URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
