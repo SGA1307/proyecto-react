@@ -127,8 +127,16 @@ export default function Registro() {
         //     headers: { "Content-Type": "application/json", 'Accept': 'application/json' },
         //     body: JSON.stringify(values)
         // })
+            // console.log("URL---->",URL)
+            // fetch(`${URL}/registro-usuario` , {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json", "Accept": "application/json"},
+            //     body:JSON.stringify(values)
+            // })
+
             console.log("URL---->",URL)
-            fetch(`${URL}/registro-usuario` , {
+            fetch(`${URL}/sql5714458` , {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", "Accept": "application/json"},
