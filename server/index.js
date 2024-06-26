@@ -1,8 +1,8 @@
-const express = require('express');
-const app = express();
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const axios = require("axios")
+// const express = require('express');
+// const app = express();
+// const cors = require('cors')
+// const bodyParser = require('body-parser')
+// const axios = require("axios")
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
@@ -48,13 +48,6 @@ const { registrarUsuario, iniciarSesion } = require('./controllers/userControlle
 const bodyParser = require('body-parser');
 const path = require('path');
 const axios = require('axios');
-
-// const express = require('express');
-// const cors = require('cors');
-// const bodyParser = require('body-parser');
-// const path = require('path');
-// const axios = require('axios');
-// const userController = require('./controllers/userController');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
