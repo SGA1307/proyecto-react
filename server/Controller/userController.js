@@ -108,103 +108,146 @@ const cors = require("cors");
 app.use(cors());
 //const fetch = require('node-fetch')
 
-const controller = {
-  register: function (req, res) {
-    let config = {
-      method: "GET",
-      maxBodyLength: Infinity,
-      url: "https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Master-Key":
-          "$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX.",
-      },
-    };
-    axios(config).then((result) => {
-      console.log(result.data.record);
-      let id = result.data.record.length + 1;
-      const usuarioNuevo = {
-        id: id,
-        identificacion: req.body.identificacion,
-        nombres: req.body.nombres,
-        apellidos: req.body.apellidos,
-        email: req.body.email,
-        direccion: req.body.direccion,
-        telefono: req.body.telefono,
-        fechaNacimiento: req.body.fechaNacimiento,
-        deptoResidencia: req.body.deptoResidencia,
-        municipioResidencia: req.body.municipioResidencia,
-        password: req.body.password,
-        estado: "activo",
-        rol: "Usuario",
-        fecha_creación: new Date(),
-      };
-      if (result.data.record.length === 0) {
-        result.data.record.push(usuarioNuevo);
-      } else {
-        for (x of result.data.record) {
-          if (x.email === req.body.email) {
-            res.status(400).send("Usuario ya existe en la Base de Datos");
-            return;
-          }
-        }
-        result.data.record.push(usuarioNuevo);
-      }
-      console.log("--->>>", result.data.record);
+// const controller = {
+//   register: function (req, res) {
+//     let config = {
+//       method: "GET",
+//       maxBodyLength: Infinity,
+//       url: "https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "X-Master-Key":
+//           "$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX.",
+//       },
+//     };
+//     axios(config).then((result) => {
+//       console.log(result.data.record);
+//       let id = result.data.record.length + 1;
+//       const usuarioNuevo = {
+//         id: id,
+//         identificacion: req.body.identificacion,
+//         nombres: req.body.nombres,
+//         apellidos: req.body.apellidos,
+//         email: req.body.email,
+//         direccion: req.body.direccion,
+//         telefono: req.body.telefono,
+//         fechaNacimiento: req.body.fechaNacimiento,
+//         deptoResidencia: req.body.deptoResidencia,
+//         municipioResidencia: req.body.municipioResidencia,
+//         password: req.body.password,
+//         estado: "activo",
+//         rol: "Usuario",
+//         fecha_creación: new Date(),
+//       };
+//       if (result.data.record.length === 0) {
+//         result.data.record.push(usuarioNuevo);
+//       } else {
+//         for (x of result.data.record) {
+//           if (x.email === req.body.email) {
+//             res.status(400).send("Usuario ya existe en la Base de Datos");
+//             return;
+//           }
+//         }
+//         result.data.record.push(usuarioNuevo);
+//       }
+//       console.log("--->>>", result.data.record);
 
-      fetch("https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "Application/json",
-          "X-Master-Key":
-            "$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX.",
-        },
-        body: JSON.stringify(result.data.record),
-      })
-        // let configPut = {
-        //   method: "PUT",
-        //   url: "https://json.extendsclass.com/bin/cd70c6c83bc6",
-        //   headers: { "Content-Type": "Application/json", "Security-key": "12345678" },
-        //   body: JSON.stringify(result.data),
-        // }
-        // axios(configPut)
-        .then((response) => {
-          console.log(response.status);
-          if (response.status === 200) {
-            res.status(200).send("ok");
-            return;
-          } else {
-            res.status(400).send("No Ok");
-            return;
-          }
-        });
-    });
-  },
-  login: async function (req, res) {
-    try {
-      // Obtener los datos del JSON remoto
-      const response = await axios.get("https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff", {
-        headers: {
-          "X-Master-Key": "$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX."
-        }
-      });
-      const users = response.data.record;
+//       fetch("https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff", {
+//         method: "PUT",
+//         headers: {
+//           "Content-Type": "Application/json",
+//           "X-Master-Key":
+//             "$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX.",
+//         },
+//         body: JSON.stringify(result.data.record),
+//       })
+//         // let configPut = {
+//         //   method: "PUT",
+//         //   url: "https://json.extendsclass.com/bin/cd70c6c83bc6",
+//         //   headers: { "Content-Type": "Application/json", "Security-key": "12345678" },
+//         //   body: JSON.stringify(result.data),
+//         // }
+//         // axios(configPut)
+//         .then((response) => {
+//           console.log(response.status);
+//           if (response.status === 200) {
+//             res.status(200).send("ok");
+//             return;
+//           } else {
+//             res.status(400).send("No Ok");
+//             return;
+//           }
+//         });
+//     });
+//   },
+//   login: async function (req, res) {
+//     try {
+//       // Obtener los datos del JSON remoto
+//       const response = await axios.get("https://api.jsonbin.io/v3/b/664e418dacd3cb34a84c01ff", {
+//         headers: {
+//           "X-Master-Key": "$2a$10$BO.PSiIeJnb77KU2UrhWK.q6wORZ43gmh9EuvBrnQV9tPJ/PmLWX."
+//         }
+//       });
+//       const users = response.data.record;
 
-      // Verificar las credenciales
-      for (const user of users) {
-        if (user.email === req.body.email && user.password === req.body.password) {
-          return res.status(200).send("Ok");
-        }
-      }
+//       // Verificar las credenciales
+//       for (const user of users) {
+//         if (user.email === req.body.email && user.password === req.body.password) {
+//           return res.status(200).send("Ok");
+//         }
+//       }
 
-      // Si no se encontró el usuario con las credenciales proporcionadas
-      return res.status(400).send("Error: Credenciales inválidas");
-    } catch (error) {
-      console.error("Error al procesar el inicio de sesión:", error);
-      return res.status(500).send("Error interno del servidor");
-    }
+//       // Si no se encontró el usuario con las credenciales proporcionadas
+//       return res.status(400).send("Error: Credenciales inválidas");
+//     } catch (error) {
+//       console.error("Error al procesar el inicio de sesión:", error);
+//       return res.status(500).send("Error interno del servidor");
+//     }
+//   }
+// };
+
+// module.exports = controller;
+
+
+// controllers/userController.js
+const mysqlConnection = require('../configBD');
+
+const registrarUsuario = (req, res) => {
+  const { nombres, apellidos, email, password, telefono } = req.body;
+  if (!nombres || !apellidos || !email || !password || !telefono) {
+    return res.status(400).json({ error: 'Todos los campos son obligatorios' });
   }
+
+  const query = 'INSERT INTO usuarios (nombres, apellidos, email, password, telefono) VALUES (?, ?, ?, ?, ?)';
+  mysqlConnection.query(query, [nombres, apellidos, email, password, telefono], (err, result) => {
+    if (err) {
+      console.error('Error al registrar usuario en MySQL:', err);
+      return res.status(500).json({ error: 'Error al registrar usuario' });
+    }
+    res.status(201).json({ message: 'Usuario registrado con éxito' });
+  });
 };
 
-module.exports = controller;
+const iniciarSesion = (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Correo electrónico y contraseña son obligatorios' });
+  }
 
+  const query = 'SELECT * FROM usuarios WHERE email = ? AND password = ?';
+  mysqlConnection.query(query, [email, password], (err, rows) => {
+    if (err) {
+      console.error('Error al buscar usuario en MySQL:', err);
+      return res.status(500).json({ error: 'Error al buscar usuario' });
+    }
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Usuario no encontrado o contraseña incorrecta' });
+    }
+
+    const user = rows[0];
+    res.json({ message: 'Inicio de sesión exitoso', user });
+  });
+};
+
+module.exports = { registrarUsuario, iniciarSesion };
