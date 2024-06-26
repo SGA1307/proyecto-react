@@ -213,13 +213,13 @@ app.use(cors());
 const mysqlConnection = require('../configBD');
 
 const registrarUsuario = (req, res) => {
-  const { nombres, apellidos, email, password, telefono } = req.body;
-  if (!nombres || !apellidos || !email || !password || !telefono) {
+  const { identificacion, nombres, apellidos, email, direccion, telefono, password, fecha_creacion } = req.body;
+  if (!identificacion || !nombres || !apellidos || !email|| !direccion || !telefono || !password || !fecha_creacion) {
     return res.status(400).json({ error: 'Todos los campos son obligatorios' });
   }
 
-  const query = 'INSERT INTO usuarios (nombres, apellidos, email, password, telefono) VALUES (?, ?, ?, ?, ?)';
-  mysqlConnection.query(query, [nombres, apellidos, email, password, telefono], (err, result) => {
+  const query = 'INSERT INTO usuarios (identificacion, nombres, apellidos, email, direccion, telefono, password, fecha_creacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+  mysqlConnection.query(query, [identificacion, nombres, apellidos, email, direccion, telefono, password, fecha_creacion](err, result) => {
     if (err) {
       console.error('Error al registrar usuario en MySQL:', err);
       return res.status(500).json({ error: 'Error al registrar usuario' });
