@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 //Solicitamos la conexión a la BD
-const conexion = require('./configDB/configDB.js')
+const conexion = require('../configDB.js')
 
 app.get("/todos-los-Usuarios", (req, res) => {
 conexion.connect(function (err) {
