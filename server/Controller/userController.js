@@ -218,8 +218,8 @@ const registrarUsuario = (req, res) => {
     return res.status(400).json({ error: 'Todos los campos son obligatorios' });
   }
 
-  const query = 'INSERT INTO usuarios (identificacion, nombres, apellidos, email, direccion, telefono, password, fecha_creacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-  mysqlConnection.query(query, [identificacion, nombres, apellidos, email, direccion, telefono, password, fecha_creacion](err, result) => {
+  const query = 'INSERT INTO usuario (identificacion, nombres, apellidos, email, direccion, telefono, password, fecha_creacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+  mysqlConnection.query(query, [identificacion, nombres, apellidos, email, direccion, telefono, password, fecha_creacion],(err, result) => {
     if (err) {
       console.error('Error al registrar usuario en MySQL:', err);
       return res.status(500).json({ error: 'Error al registrar usuario' });
